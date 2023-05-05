@@ -1,4 +1,5 @@
 import React from "react";
+import { QuestionBox } from "../QuestionBox";
 import "./style.css";
 
 export const Home = () => {
@@ -8,14 +9,7 @@ export const Home = () => {
         <h1>Ask anything about the Dark Tower!</h1>
       </div>
     
-      <div className="content">
-        <input
-          type="text"
-          placeholder="What is the Dark Tower?"
-          className="input-question"
-        />
-        <button className="search">Search</button>
-      </div>
+      <QuestionBox />
     </div>
   );
 };
