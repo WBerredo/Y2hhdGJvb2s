@@ -4,9 +4,9 @@ import "./style.css";
 
 export const QuestionBox = () => {
   const [question, setQuestion] = useState("");
-  const [enabled, setEnabled] = useState(false);
+  const [searching, setSearching] = useState(false);
 
-  const { data } = useQuery({
+  const { data, isFetching } = useQuery({
     queryKey: ["question", window.btoa(question)],
     queryFn: () =>
       fetch("api/v1/question", {
@@ -19,13 +19,13 @@ export const QuestionBox = () => {
           question,
         }),
       }).then((res) => res.json()),
-    enabled,
+    enabled: searching,
   });
   const { answer } = data || { answer: "" };
 
   const onChange = (e) => {
     setQuestion(e.target.value);
-    setEnabled(false);
+    setSearching(false);
   };
 
   return (
@@ -37,12 +37,28 @@ export const QuestionBox = () => {
           className="input-question"
           value={question}
           onChange={onChange}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              setSearching(true);
+            }
+          }}
         />
-        <button className="search" onClick={() => setEnabled(true)}>
-          Search
+        <button
+          className={`search ${isFetching ? "searching" : ""}`}
+          onClick={() => setSearching(true)}
+        >
+          {isFetching ? "Searching..." : "Search"}
         </button>
       </div>
-      <div className="answer-container">{answer}</div>
+      <div className={`answer-container ${!answer ? "hide" : ""}`}>
+        <div>{answer}</div>
+      </div>
+
+      <div className="most-asked-questions">
+        <h3>Most asked questions</h3>
+
+
+      </div>
     </div>
   );
 };

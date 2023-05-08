@@ -40,6 +40,21 @@
     background: #ef8376;
   }
 
+  .search.searching {
+    background: #b22313;
+  }
+
   .answer-container {
     margin-top: 20px;
+    text-align: justify;
+    height: 150px;
+  }
+
+  .answer-container div{
+    background: rgba(0,0,0,0.5);
+    padding: 20px;
+  }
+
+  .answer-container.hide {
+    visibility: hidden;
   }

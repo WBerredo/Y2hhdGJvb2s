@@ -1,7 +1,6 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-image: url("../../../assets/images/header.jpg");
   background-size: cover;
@@ -12,4 +11,8 @@
   height: calc(100vh + 20px);
   overflow-y: hidden;
   margin: -20px 0 0 -8px;
+}
+
+.title {
+  margin-top: 100px;
 }
