@@ -76,3 +76,7 @@ gem "webpacker", "~> 5.4"
 gem "http"
 
 gem 'dotenv-rails', groups: [:development, :test]
+
+gem "pdf-reader"
+
+gem 'csv'

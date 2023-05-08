@@ -41,4 +41,11 @@
 yarn-debug.log*
 .yarn-integrity
 
+# Ignore environment variables file
 .env
+
+# Ignore pdf files
+*.pdf
+
+# Ignore csv files (use for embeddings)
+*.csv
