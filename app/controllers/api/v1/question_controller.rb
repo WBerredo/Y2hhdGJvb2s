@@ -1,20 +1,28 @@
-require "http"
-
 class Api::V1::QuestionController < ApplicationController
     protect_from_forgery with: :null_session
 
     def index
         question = params[:question]
 
-        result = HTTP
-            .headers(:accept => "application/json")
-            .auth("Bearer #{ENV['OPENAI_API_KEY']}")
-            .post("https://api.openai.com/v1/chat/completions", :json => {
-                :model => "gpt-3.5-turbo",
-                :messages => [{ role: "user", content: question }],
-            })
-            .body
-        answer = JSON.parse(result)["choices"][0]["message"]["content"]
+        if (not question.end_with?("?"))
+            question += "?"
+        end
+
+        question_embeddings = Numo::NArray[*helpers.generate_embeddings(question)]
+
+        csv_table = CSV.read("book_embeddings.csv", headers: true, return_headers: false).map(&:fields)
+        similarity_table = helpers.generate_similarity_table(question_embeddings)
+
+        sorted_table = similarity_table.sort {|a,b| b[1] <=> a[1]} # sort by similarity
+        chosen_sections = sorted_table[0...4]
+
+        prompt = helpers.get_base_context
+       
+        prompt += chosen_sections.map {|section| section[0]}.join("\n")
+        prompt += "\n\n#{question}"
+
+        result = helpers.request_completion(prompt)
+        answer = result["choices"][0]["text"]
 
         render json: {answer: answer}
     end

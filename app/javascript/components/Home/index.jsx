@@ -6,7 +6,7 @@ export const Home = () => {
   return (
     <div className="container">
       <div className="title">
-        <h1>Ask anything about the Dark Tower!</h1>
+        <h1>Ask anything about Die with Zero!</h1>
       </div>
     
       <QuestionBox />

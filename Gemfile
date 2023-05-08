@@ -79,4 +79,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 gem "pdf-reader"
 
-gem 'csv'
+gem "csv"
+
+gem "numo-narray"

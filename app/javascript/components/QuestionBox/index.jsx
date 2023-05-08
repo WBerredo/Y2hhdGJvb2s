@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import "./style.css";
 
 export const QuestionBox = () => {
-  const [question, setQuestion] = useState("Who is Stephen King?");
+  const [question, setQuestion] = useState("");
   const [enabled, setEnabled] = useState(false);
 
   const { data } = useQuery({
@@ -33,7 +33,7 @@ export const QuestionBox = () => {
       <div className="question-container">
         <input
           type="text"
-          placeholder="What is the Dark Tower?"
+          placeholder="Why die with zero?"
           className="input-question"
           value={question}
           onChange={onChange}
