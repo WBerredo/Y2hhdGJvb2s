@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { MOST_ASKED_QUESTIONS } from "./utils";
 import "./style.css";
 
 export const QuestionBox = () => {
@@ -28,6 +29,11 @@ export const QuestionBox = () => {
     setSearching(false);
   };
 
+  const onClickOnMostAskedQuestion = (question) => {
+    setQuestion(question);
+    setSearching(true);
+  };
+
   return (
     <div className="content">
       <div className="question-container">
@@ -54,10 +60,18 @@ export const QuestionBox = () => {
         <div>{answer}</div>
       </div>
 
-      <div className="most-asked-questions">
-        <h3>Most asked questions</h3>
+      <div className="frequent-questions">
+        <h2>Frequent Questions</h2>
 
-
+        <ul>
+          {MOST_ASKED_QUESTIONS.map((question, i) => (
+            <li key={`question-${i}`}>
+              <a onClick={() => onClickOnMostAskedQuestion(question)}>
+                {question}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
