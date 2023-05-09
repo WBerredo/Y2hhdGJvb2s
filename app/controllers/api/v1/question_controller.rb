@@ -30,7 +30,7 @@ class Api::V1::QuestionController < ApplicationController
         answer = result["choices"][0]["text"]
 
         question_to_be_saved = Question.create(question: question, answer: answer, context: prompt)
-        question.save
+        question_to_be_saved.save
         
         render json: {answer: answer}
     end

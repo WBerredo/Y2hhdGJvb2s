@@ -7,14 +7,17 @@
 
 .question-container {
   width: 400px;
+  height: 130px;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .input-question {
     display: block;
     border: 0;
     background: #fafafa;
-    width: 100%;
     border-radius: 0.5em;
     border: solid 1px #E5E5E5;
     padding: 1em;
@@ -34,6 +37,8 @@
     outline: 0;
     font-weight: 300;
     margin-left: 10px;
+    margin-top: 10px;
+    height: 50px;
   }
   
   .search:hover {

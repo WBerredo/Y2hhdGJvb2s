@@ -37,17 +37,14 @@ export const QuestionBox = () => {
   return (
     <div className="content">
       <div className="question-container">
-        <input
+        <textarea
           type="text"
           placeholder="Why die with zero?"
           className="input-question"
           value={question}
           onChange={onChange}
-          onKeyPress={(e) => {
-            if (e.key === "Enter") {
-              setSearching(true);
-            }
-          }}
+          rows={2}
+          cols={60}
         />
         <button
           className={`search ${isFetching ? "searching" : ""}`}
