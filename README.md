@@ -34,6 +34,14 @@ rails r lib/create_embeddings.rb yourfile.pdf
 ```
 rails db:migrate
 ```
+
+7. Install [node](https://nodejs.org/en/download) and [yarn](https://classic.yarnpkg.com/lang/en/docs/install)
+
+8. Install node dependencies
+
+```
+yarn
+```
 ## Run locally
 
 1. Run your Rails app:
